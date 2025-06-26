@@ -459,7 +459,6 @@ body {
 
     .right-panel {
         position: static;
-        order: -1;
     }
 
     .content-types {
@@ -580,5 +579,80 @@ body {
     .qr-preview {
         border: 1px solid #000;
         background: white;
+    }
+}
+/* Additional styles for enhanced design section */
+.color-picker {
+    height: 50px !important;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.25rem !important;
+}
+
+.input-help {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.range-value {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    min-width: 40px;
+}
+
+.frame-options {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.gradient-options {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.download-options {
+    margin-bottom: 1.5rem;
+}
+
+/* Frame preview enhancements */
+.frame-option {
+    position: relative;
+    overflow: visible;
+}
+
+.frame-option::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.frame-option.active::after {
+    opacity: 0.3;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+    .color-picker {
+        height: 40px !important;
+    }
+    
+    .range-value {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.25rem;
     }
 }
