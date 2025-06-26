@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRCraft Pro - Advanced QR Code Generator</title>
+    <meta name="description" content="Professional QR code generator with custom frames, shapes, and multiple content types.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1><i class="fas fa-qrcode"></i> QRCraft Pro</h1>
+                <p>Professional QR code generator with advanced customization options</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="main-content">
+            <div class="left-panel">
+                <!-- Step 1: Content Selection -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="step-number">1</div>
+                        <h2>Complete the content</h2>
+                    </div>
+
+                    <div id="messageContainer"></div>
+
+                    <div class="content-types">
+                        <div class="content-type active" data-type="link">
+                            <i class="fas fa-link"></i>
+                            <span>Link</span>
+                        </div>
+                        <div class="content-type" data-type="text">
+                            <i class="fas fa-font"></i>
+                            <span>Text</span>
+                        </div>
+                        <div class="content-type" data-type="email">
+                            <i class="fas fa-envelope"></i>
+                            <span>E-mail</span>
+                        </div>
+                        <div class="content-type" data-type="call">
+                            <i class="fas fa-phone"></i>
+                            <span>Call</span>
+                        </div>
+                        <div class="content-type" data-type="sms">
+                            <i class="fas fa-sms"></i>
+                            <span>SMS</span>
+                        </div>
+                        <div class="content-type" data-type="vcard">
+                            <i class="fas fa-address-card"></i>
+                            <span>V-card</span>
+                        </div>
+                        <div class="content-type" data-type="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="content-type" data-type="wifi">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wi-Fi</span>
+                        </div>
+                        <div class="content-type" data-type="pdf">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>PDF</span>
+                        </div>
+                        <div class="content-type" data-type="app">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>App</span>
+                        </div>
+                        <div class="content-type" data-type="event">
+                            <i class="fas fa-calendar"></i>
+                            <span>Event</span>
+                        </div>
+                        <div class="content-type" data-type="social">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Social Media</span>
+                        </div>
+                    </div>
+
+                    <div id="contentForm">
+                        <!-- Dynamic form will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Step 2: Design Options -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="step-number">2</div>
+                        <h2>Design your QR Code</h2>
+                    </div>
+
+                    <div class="design-tabs">
+                        <button class="design-tab active" data-tab="frame">Frame</button>
+                        <button class="design-tab" data-tab="shape">Shape</button>
+                        <button class="design-tab" data-tab="logo">Logo</button>
+                    </div>
+
+                    <div id="frameTab" class="design-content">
+                        <div class="frame-grid">
+                            <div class="frame-option active" data-frame="none">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="frame-option" data-frame="square">
+                                <i class="fas fa-square"></i>
+                            </div>
+                            <div class="frame-option" data-frame="rounded">
+                                <i class="fas fa-square" style="border-radius: 20%;"></i>
+                            </div>
+                            <div class="frame-option" data-frame="circle">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="frame-option" data-frame="monitor">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="frame-option" data-frame="mobile">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="frame-option" data-frame="tablet">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <div class="frame-option" data-frame="badge">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="shapeTab" class="design-content" style="display: none;">
+                        <div class="input-group">
+                            <label class="input-label">Corner Style</label>
+                            <select class="input-field" id="cornerStyle">
+                                <option value="square">Square</option>
+                                <option value="rounded">Rounded</option>
+                                <option value="circle">Circle</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Pattern Style</label>
+                            <select class="input-field" id="patternStyle">
+                                <option value="square">Square</option>
+                                <option value="circle">Circle</option>
+                                <option value="rounded">Rounded Square</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="logoTab" class="design-content" style="display: none;">
+                        <div class="input-group">
+                            <label class="input-label">Upload Logo</label>
+                            <input type="file" class="input-field" id="logoUpload" accept="image/*">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Logo Size</label>
+                            <input type="range" class="input-field" id="logoSize" min="10" max="30" value="20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <!-- Step 3: Preview & Download -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="step-number">3</div>
+                        <h2>Download QR Code</h2>
+                    </div>
+
+                    <div class="qr-preview" id="qrPreview">
+                        <div class="qr-placeholder" id="qrPlaceholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>Your QR code will appear here</p>
+                            <small>Complete step 1 to generate</small>
+                        </div>
+                        <div id="qrCodeDisplay"></div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <button class="btn btn-primary" id="downloadBtn" disabled>
+                            <i class="fas fa-download"></i>
+                            Download QR Code
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-refresh"></i>
+                            Start Over
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- custom .js file  -->
+    <script src="script.js"></script>
+</body>
+</html>
